@@ -3,10 +3,19 @@ import Product from "./Product";
 export default function Home() {
   const [items, setItems] = useState([]);
   const [selection, setSelection] = useState("");
+
+  const url =
+    selection === "categories"
+      ? `https://fakestoreapi.com/products`
+      : `https://fakestoreapi.com/products/category/${selection}`;
+
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then((data) => setItems(data));
+    async function fetchData() {
+      const res = await fetch(url);
+      const data = await res.json();
+      setItems(data);
+    }
+    fetchData();
   }, [selection]);
 
   function handleSelect(e) {
@@ -21,24 +30,22 @@ export default function Home() {
   ));
   return (
     <>
-      <div className="bg-cyan-950 h-50 flex flex-col p-5 justify-between items-center gap-5 text-white">
+      <div className="bg-cyan-950 h-50 flex flex-col p-3 justify-between items-center gap-5 text-white fixed mt-14 w-full">
         <select
           name=""
           id=""
           className="bg-cyan-950 text-center"
           onChange={handleSelect}
         >
-          <option value="" selected>
-            Select Category
-          </option>
-          <option value="Men's Clothing">Men's Clothing</option>
-          <option value="Jewelery">Jewelery</option>
-          <option value="Electronics">Electronics</option>
-          <option value="Women's Clothing">Women's Clothing</option>
+          <option value="categories">Select Category</option>
+          <option value="men's clothing">Men's Clothing</option>
+          <option value="jewelery">Jewelery</option>
+          <option value="electronics">Electronics</option>
+          <option value="women's clothing">Women's Clothing</option>
         </select>
       </div>
 
-      <div className="p-10 flex flex-col items-start">{elements}</div>
+      <div className="p-10 flex flex-col items-start pt-40">{elements}</div>
     </>
   );
 }
