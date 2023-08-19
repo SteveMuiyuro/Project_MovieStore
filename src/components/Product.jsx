@@ -15,6 +15,10 @@ export default function Product({ product }) {
         <span className="font-bold">Title: </span>
         {product?.title}
       </p>
+      <p>
+        <span className="font-bold">Description: </span>
+        {product?.description}
+      </p>
       <p className="font-bold">
         <span className="font-bold">Price: </span>
         {product?.price.toLocaleString("en-US", {
@@ -24,7 +28,7 @@ export default function Product({ product }) {
       </p>
       <button
         className="text-white bg-cyan-950 rounded w-20 cursor-pointer"
-        onClick={handleCart}
+        onClick={() => handleCart(product.id)}
       >
         + Cart
       </button>

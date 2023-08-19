@@ -1,22 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import Product from "./Product";
+import { Context } from "../App";
+
 export default function Home() {
-  const [items, setItems] = useState([]);
-  const [selection, setSelection] = useState("");
-
-  const url =
-    selection === "categories"
-      ? `https://fakestoreapi.com/products`
-      : `https://fakestoreapi.com/products/category/${selection}`;
-
-  useEffect(() => {
-    async function fetchData() {
-      const res = await fetch(url);
-      const data = await res.json();
-      setItems(data);
-    }
-    fetchData();
-  }, [selection]);
+  const { items, selection, setSelection, setItems } = useContext(Context);
 
   function handleSelect(e) {
     const { value } = e.target;
