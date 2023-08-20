@@ -1,8 +1,9 @@
 import "./index.css";
-import Home from "./components/Home";
+import Search from "./components/Search";
 import NavBar from "./components/NavBar";
 import { createContext, useState, useEffect } from "react";
-import { resolveProjectReferencePath } from "typescript";
+import Cart from "./components/Cart";
+import Items from "./components/Items";
 const Context = createContext();
 
 export default function App() {
@@ -10,9 +11,10 @@ export default function App() {
   const [cartItems, setCartItems] = useState([]);
   const [items, setItems] = useState([]);
   const [selection, setSelection] = useState("");
+  const [hidden, setHidden] = useState(false);
 
   const url =
-    selection === "categories"
+    selection === ""
       ? `https://fakestoreapi.com/products`
       : `https://fakestoreapi.com/products/category/${selection}`;
 
@@ -37,12 +39,31 @@ export default function App() {
     setCount((prev) => prev + 1);
   }
 
+  function displayCart() {
+    setHidden(true);
+  }
+
   return (
     <Context.Provider
-      value={{ count, handleCart, items, selection, setSelection, setItems }}
+      value={{
+        count,
+        handleCart,
+        items,
+        selection,
+        setSelection,
+        setItems,
+        cartItems,
+        displayCart,
+        setHidden,
+        setCartItems,
+        setCount,
+        hidden,
+      }}
     >
       <NavBar />
-      <Home />
+      {!hidden && <Search />}
+      {!hidden && <Items />}
+      {hidden && <Cart />}
     </Context.Provider>
   );
 }
