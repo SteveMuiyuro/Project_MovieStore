@@ -55,7 +55,7 @@ export default function Cart() {
           type="number"
           id="number"
           min="1"
-          defaultValue={1}
+          defaultValue={Number(1)}
           className=" text-center w-10"
           onChange={(event) => handleChange(event, item.id)}
         />
