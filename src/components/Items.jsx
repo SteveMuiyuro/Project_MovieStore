@@ -9,6 +9,8 @@ export default function Items() {
     <Product key={product.id} product={product} />
   ));
   return (
-    <div className="p-10 flex flex-col items-start pt-40 ">{elements}</div>
+    <div className="p-10 flex flex-col items-start pt-40 lg:grid grid-cols-3 gap-5">
+      {elements}
+    </div>
   );
 }

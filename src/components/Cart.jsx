@@ -32,9 +32,9 @@ export default function Cart() {
   const elements = cartItems?.map((item) => (
     <div
       key={item.id}
-      className="flex flex-col justify-center items-center gap-3 mt-10 px-5"
+      className="flex flex-col justify-center items-center gap-3 mt-10 px-5 md:px-10 text-xl"
     >
-      <img src={item.image} className="h-52 w-52" />
+      <img src={item.image} className="w-60" />
       <p>
         <span className="font-bold">Name: </span>
         {item.title}
@@ -75,18 +75,18 @@ export default function Cart() {
       {!hideCart ? (
         <div className="flex justify-center items-center h-full">
           {cartItems.length > 0 ? (
-            <div className="flex flex-col gap-5 justify-between  items-center pt-20 pb-10">
+            <div className="flex flex-col gap-5 justify-between  items-center pt-20 pb-10 lg:grid grid-cols-2 gap-5">
               {elements}
-              <div className=" flex gap-5 justify-center items-center">
+              <div className=" flex gap-5 justify-center items-center lg:col-span-2 mt-20">
                 <button
-                  className="bg-cyan-950 px-4 py-2 text-white rounded cursor-pointer"
+                  className="bg-cyan-950 px-4 py-2 text-white rounded cursor-pointer md:text-xl"
                   onClick={returnToStore}
                 >
                   Continue Shopping
                 </button>
                 {cartItems.length && (
                   <button
-                    className="bg-cyan-950 text-white py-2 px-4 rounded  cursor-pointer"
+                    className="bg-cyan-950 text-white py-2 px-4 rounded  cursor-pointer md:text-xl"
                     onClick={handleCheckout}
                   >
                     Checkout

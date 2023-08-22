@@ -12,14 +12,16 @@ export default function Search() {
   }
   return (
     <>
-      <div className="bg-cyan-950 h-50 flex flex-col p-3 justify-between items-center gap-5 text-white fixed mt-14 w-full ">
+      <div className="bg-cyan-950 h-50 flex flex-col p-3 justify-between items-center gap-5 text-white fixed mt-20 w-full md:text-xl">
         <select
           name=""
           id=""
           className="bg-cyan-950 text-center"
           onChange={handleSelect}
         >
-          <option value="">Select Category</option>
+          <option value="" className="md:text-2xl">
+            Select Category
+          </option>
           <option value="men's clothing">Men's Clothing</option>
           <option value="jewelery">Jewelery</option>
           <option value="electronics">Electronics</option>
