@@ -35,7 +35,7 @@ export default function Checkout() {
   return (
     <>
       {!hideCheckout ? (
-        <div className="pt-20 p-4 flex flex-col gap-5 cursor-pointer md:px-10 md:text-xl md:pt-40">
+        <div className="pt-40 p-4 flex flex-col gap-5 cursor-pointer md:px-10 md:text-xl md:pt-40">
           {elements}
           <hr className="border-cyan-950 border-2" />
           <div className="flex justify-end pr-3">
